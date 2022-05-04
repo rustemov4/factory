@@ -25,13 +25,19 @@ app.use(session({
 app.post('/register', (req, res) => {
     const { firstname, lastname, password, email } = req.body
     actions.register({ firstname, lastname, password, email })
-    res.json("Added")
 })
-app.get('/main',validate.checkAuth,(req,res) =>{
+app.get('/main', validate.checkAuth, (req, res) => {
     res.json(req.session)
 })
 app.post('/login', validate.check, (req, res) => {
     res.json("logged in successfully")
+})
+app.post('/registerTeacher', (req, res) => {
+    const { firstname, lastname, password, email, description } = req.body
+    actions.registerTeacher({ firstname, lastname, password, email, description })
+})
+app.post('/loginTeacher', validate.checkTeacher, (req, res) => {
+    res.json(req.session)
 })
 
 server.listen(5000, () => console.log(`Server Running at port 5000 `));
