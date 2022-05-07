@@ -1,0 +1,7 @@
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'
+export const PROFILE_ROUTE = '/profile'
+export const COURSES_ROUTE = '/courses'
+export const TEACHER_PAGE_ROUTE = '/teacher'
+export const LANDING_ROUTE = '/'
+export const SUBSCRIPTION_ROUTE = '/sub'
