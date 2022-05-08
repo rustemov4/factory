@@ -18,6 +18,9 @@ const TeacherItem = ({teacher}) => {
                         <h3>
                             {teacher.name}
                         </h3>
+                        <h6>
+                            {teacher.sub}
+                        </h6>
                         <div className="d-flex pl-3 pr-3">
                             <div style={{fontSize: "20px"}}  className="mr-3">5</div>
                             <Image style={{aspectRatio: 1/1}} width={25} src={Star}/>

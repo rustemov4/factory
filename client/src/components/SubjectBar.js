@@ -14,7 +14,8 @@ const SubjectBar = observer(() => {
                 style={{cursor: 'pointer'}}
                 active={type.id === subjects.selectedType.id}
                 onClick={() => subjects.setSelectedType(type)}
-                key={type.id}>
+                key={type.id}
+                >
                     {type.name}
                 </ListGroup.Item>
             )}

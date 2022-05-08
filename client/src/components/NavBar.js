@@ -2,16 +2,18 @@ import React, {useContext, userNavigate} from "react";
 import { Navbar, Nav, Container, NavLink } from "react-bootstrap";
 import { Context } from "..";
 import Button from 'react-bootstrap/Button'
-import { LANDING_ROUTE, COURSES_ROUTE, SUBSCRIPTION_ROUTE, PROFILE_ROUTE } from "../utils/consts";
+import { LANDING_ROUTE, COURSES_ROUTE, SUBSCRIPTION_ROUTE, PROFILE_ROUTE, LOGIN_ROUTE } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
     const {user} = useContext(Context)
-    // const navigate = userNavigate();
+    const navigate = useNavigate()
 
-    // const logOut = () => {
-    //     user.setUser({})
-    //     user.setIsAuth(false)
-    // }
+    const logOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+        navigate(LOGIN_ROUTE)
+    }
 
     return (
         <>
@@ -24,9 +26,22 @@ const NavBar = () => {
                 </Nav>
                 <Nav className="ml-auto">
                     <NavLink href={PROFILE_ROUTE}>Profile</NavLink>
-                    <Button variant={"outline-light"}>
-                        {user.isAuth ? "Logout" : "Login"}
-                    </Button>
+                    {
+                        user.isAuth ?
+                        <Button 
+                            variant={"outline-light"}
+                            onClick={() => logOut()}
+                        >
+                            Logout
+                        </Button>
+                        :
+                        <Button 
+                            variant={"outline-light"}
+                            onClick={() => navigate(LOGIN_ROUTE)}    
+                        >
+                            Login
+                        </Button>
+                    }
                 </Nav>
                 </Container>
             </Navbar>
